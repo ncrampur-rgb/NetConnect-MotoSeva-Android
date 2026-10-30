@@ -1,8 +1,6 @@
-NetConnect + MotoSeva V12 Offline Web App
+NetConnect + MotoSeva V15 — Premium Dark Blue
 
-1. Extract ZIP.
-2. Open index.html in Chrome/Edge on Windows or Android. Keep the two JPG logo files beside it.
-3. Enter details; Save Bill; Print / Save PDF. Select 4x6 inch and 100% scale in print dialog.
-4. Use Backup JSON regularly. Browser data can be lost when browser storage is cleared.
-5. This is an offline prototype, NOT a hosted website. There is no server sync or payment integration.
-6. This version has one item per bill, browser-local bill history and suggestions. It does not yet include V11's full customer database, PIN directory importer, multi-label A4, password, or automated backup.
+Weight is now entered and printed in grams, with decimal point supported (e.g. 250.5 g).
+Older V14 saved bills without a weightUnit field are assumed to be in kilograms and converted to grams when loaded. Newly saved bills are marked weightUnit=g.
+
+Deploy: extract ZIP, upload index.html and both JPG logos to the GitHub Pages publishing folder, commit. Keep the same URL and browser storage; backup bills before updating. PIN IndexedDB data is not included in JSON backup and should not be cleared.
