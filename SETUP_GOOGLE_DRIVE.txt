@@ -1,0 +1,10 @@
+NETCONNECT + MOTOSEVA V17 GOOGLE DRIVE BACKUP
+1. Publish extracted index.html and both jpg logos to your GitHub Pages site.
+2. In Google Cloud Console create/select a project, enable Google Drive API.
+3. Configure OAuth consent screen (external), app name and your Google account as test user if in Testing mode. Request scope https://www.googleapis.com/auth/drive.appdata. For broad public usage Google may require verification.
+4. Credentials > Create credentials > OAuth client ID > Web application.
+5. Authorized JavaScript origins: https://ncrampur-rgb.github.io (OR your exact HTTPS origin, no path).
+6. Copy the PUBLIC client ID (ending .apps.googleusercontent.com) into V17 app, Connect Google Drive, authorize.
+7. Backup Now, then verify status. Restore From Drive on another phone with the same Google account and Client ID.
+IMPORTANT: Backups are manual, not scheduled. Browser storage alone is NOT protected. PIN directory inclusion makes backups larger. Google Drive appDataFolder is hidden from normal Drive file list. This implementation is a browser OAuth integration and has NOT been end-to-end tested against your Google account. Do not delete original phone data until you have tested restoring to a second browser.
+SECURITY: Never paste an OAuth client secret, service account private key, or API key into the website. Keep the public repository free of customer data. Google Drive appData access is authorized by the signed-in user.

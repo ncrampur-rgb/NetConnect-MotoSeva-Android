@@ -38,7 +38,21 @@ main>.tools .note{color:#afc5e1}
  aside,main>.tools{display:none!important}
  .sheet{box-sizing:border-box!important;width:101.6mm!important;height:152.4mm!important;min-width:101.6mm!important;min-height:152.4mm!important;margin:0!important;page-break-after:avoid!important;break-after:avoid!important}
 }
-</style><div class="layout"><aside><div class="v14-eyebrow" style="font-size:11px;font-weight:800;letter-spacing:2px;color:#59d7ff;margin-bottom:10px">✦ PREMIUM BUSINESS SUITE · V16</div><h2>NetConnect <span style="color:#56c9ff">+</span> MotoSeva</h2><div class="note">Professional shipping desk · private on-device records</div><label>Shop</label><select id="shop"><option value="moto">MotoSeva</option><option value="net">NetConnect Online Services</option></select><div class="row"><div><label>Bill Number</label><input id="bill" placeholder="MOTO-000001"></div><div><label>Date</label><input id="date" type="date"></div></div><label>Courier</label><input id="courier" value="INDIA POST SPEED POST"><div class="section"><b>Receiver details</b><label>Name</label><input id="name"><label>Address / Village</label><textarea id="address"></textarea><div class="row"><div><label>Post Office</label><input id="po"></div><div><label>Police Station</label><input id="ps"></div></div><div class="row"><div><label>District</label><input id="district"></div><div><label>State</label><input id="state" value="West Bengal"></div></div><div class="row"><div><label>PIN Code</label><input id="pin" inputmode="numeric" maxlength="6"></div><div><label>Mobile</label><input id="mobile" inputmode="tel"></div></div></div><div class="section"><b>🇮🇳 All India PIN Directory (Offline)</b><p class="note">IndexedDB supports large CSV imports. Import your India Post CSV once. Enter a 6-digit PIN and select the matching post office. District and state will fill automatically. Police station remains manual.</p><input id="pinCsv" type="file" accept=".csv,text/csv"><button type="button" onclick="importPinCsv()">Import / Update PIN CSV</button><p class="note" id="pinCount">No PIN directory imported yet.</p><label>Matching Post Offices</label><select id="pinMatches" onchange="choosePin()"><option value="">Enter a PIN first</option></select></div><div class="section"><b>Item & payment</b><label>Item name (saved suggestions)</label><input id="item" list="items"><datalist id="items"></datalist><div class="row"><div><label>Quantity</label><input id="qty" type="number" min="1" value="1"></div><div><label>Total amount ₹</label><input id="amount" type="number" min="0" value="0"></div></div><div class="row"><div><label>Payment</label><select id="payment"><option>Prepaid</option><option>COD</option><option>Unpaid</option></select></div><div><label>Weight (grams · decimals allowed)</label><input id="weight" type="number" min="0" step="any" inputmode="decimal" value="500" placeholder="e.g. 250.5"></div></div><label>Status</label><select id="status"><option>Booked</option><option>Dispatched</option><option>Delivered</option></select><label>Tracking / AWB</label><input id="awb"></div><div class="tools"><button onclick="save()">Save Bill</button><button class="alt" onclick="printLabel()">Print / Save PDF</button><button onclick="newBill()">New Bill</button><button onclick="exportData()">Backup JSON</button><label>Restore JSON backup</label><input type="file" accept="application/json" onchange="restoreData(this)"></div><div class="section"><b>Saved Bills</b><select id="saved" onchange="loadBill(this.value)"><option value="">Select saved bill</option></select></div><p class="note">Your records stay in this browser unless you export them. Print at 100% scale. In Chrome print settings choose 4×6 in (101.6 × 152.4 mm) paper, margins None, and background graphics ON. If Save as PDF forces A4, select 4×6 paper in the print dialog or use a browser/printer that supports custom paper.</p></aside><main><div class="tools"><button onclick="printLabel()">Print 4×6 / Save PDF</button><span class="note">Live preview · updates as you type</span></div><div class="sheet-wrap"><div class="sheet"><div class="head"><img id="logo" src="motoseva.jpg"><div class="brand"><b id="brand">MOTOSEVA</b><div class="sub" id="subtitle">Automotive Spares & Express Logistics</div><div class="sub">Contact: 7797477567</div></div><div class="courier"><strong id="pCourier">INDIA POST SPEED POST</strong><div id="pBill"></div><div id="pDate" class="sub"></div></div></div><div class="addresses"><div class="addr"><h3>FROM (SENDER)</h3><div class="details"><strong id="sender">MotoSeva</strong><div>Rampur<br>PO: Rampur Bhatpara<br>PS: Gaighata<br>Dist: North 24 Parganas<br>West Bengal - 743249</div></div><div class="phone">Mobile: 7797477567</div></div><div class="addr"><h3>TO (DELIVER TO) <span style="float:right" id="pPinTop"></span></h3><div class="details"><strong id="pName"></strong><div id="pAddress"></div><div>PO: <span id="pPo"></span></div><div>PS: <span id="pPs"></span></div><div>District: <span id="pDistrict"></span></div><div class="highlight" id="pPin"></div></div><div class="phone" id="pMobile"></div></div></div><div class="item"><div class="itemgrid"><div><span class="small">ITEM DESCRIPTION</span><br><b id="pItem"></b></div><div><span class="small">QTY</span><br><b id="pQty"></b></div><div><span class="small">TOTAL AMOUNT</span><br><b id="pAmount"></b></div></div><div class="status"><b id="pPayment">Prepaid</b><span id="pWeight"></span><span id="pStatus"></span></div></div><div class="tracking"><div class="dash">AWB / COURIER TRACKING: <span id="pAwb"></span><span style="float:right">Affix courier barcode here</span></div></div><div class="foot">NetConnect + MotoSeva Logistics System • Consignee Delivery Copy</div></div></div></main></div><script>
+</style><div class="layout"><aside><div class="v14-eyebrow" style="font-size:11px;font-weight:800;letter-spacing:2px;color:#59d7ff;margin-bottom:10px">✦ PREMIUM BUSINESS SUITE · V17</div><h2>NetConnect <span style="color:#56c9ff">+</span> MotoSeva</h2><div class="note">Professional shipping desk · private on-device records</div><label>Shop</label><select id="shop"><option value="moto">MotoSeva</option><option value="net">NetConnect Online Services</option></select><div class="row"><div><label>Bill Number</label><input id="bill" placeholder="MOTO-000001"></div><div><label>Date</label><input id="date" type="date"></div></div><label>Courier</label><input id="courier" value="INDIA POST SPEED POST"><div class="section"><b>Receiver details</b><label>Name</label><input id="name"><label>Address / Village</label><textarea id="address"></textarea><div class="row"><div><label>Post Office</label><input id="po"></div><div><label>Police Station</label><input id="ps"></div></div><div class="row"><div><label>District</label><input id="district"></div><div><label>State</label><input id="state" value="West Bengal"></div></div><div class="row"><div><label>PIN Code</label><input id="pin" inputmode="numeric" maxlength="6"></div><div><label>Mobile</label><input id="mobile" inputmode="tel"></div></div></div><div class="section"><b>🇮🇳 All India PIN Directory (Offline)</b><p class="note">IndexedDB supports large CSV imports. Import your India Post CSV once. Enter a 6-digit PIN and select the matching post office. District and state will fill automatically. Police station remains manual.</p><input id="pinCsv" type="file" accept=".csv,text/csv"><button type="button" onclick="importPinCsv()">Import / Update PIN CSV</button><p class="note" id="pinCount">No PIN directory imported yet.</p><label>Matching Post Offices</label><select id="pinMatches" onchange="choosePin()"><option value="">Enter a PIN first</option></select></div><div class="section"><b>Item & payment</b><label>Item name (saved suggestions)</label><input id="item" list="items"><datalist id="items"></datalist><div class="row"><div><label>Quantity</label><input id="qty" type="number" min="1" value="1"></div><div><label>Total amount ₹</label><input id="amount" type="number" min="0" value="0"></div></div><div class="row"><div><label>Payment</label><select id="payment"><option>Prepaid</option><option>COD</option><option>Unpaid</option></select></div><div><label>Weight (grams · decimals allowed)</label><input id="weight" type="number" min="0" step="any" inputmode="decimal" value="500" placeholder="e.g. 250.5"></div></div><label>Status</label><select id="status"><option>Booked</option><option>Dispatched</option><option>Delivered</option></select><label>Tracking / AWB</label><input id="awb"></div><div class="tools"><button onclick="save()">Save Bill</button><button class="alt" onclick="printLabel()">Print / Save PDF</button><button onclick="newBill()">New Bill</button><button onclick="exportData()">Backup JSON</button><label>Restore JSON backup</label><input type="file" accept="application/json" onchange="restoreData(this)"></div><div class="section" id="cloudBackupSection">
+<b>☁️ Secure Google Drive Backup (V17)</b>
+<p class="note">Your backup is stored in your own Google Drive app-data folder (hidden from ordinary Drive files). Google sign-in is required. This is a manual backup, not automatic sync. Never put passwords or Google API secrets in this page.</p>
+<label>Google OAuth Web Client ID</label>
+<input id="googleClientId" placeholder="123456789-xxxxx.apps.googleusercontent.com" autocomplete="off" spellcheck="false">
+<p class="note">One-time setup: create a Google Cloud OAuth Web Client ID and authorize your exact GitHub Pages HTTPS origin. This public client ID is not a secret.</p>
+<div class="tools">
+<button type="button" onclick="driveConnect()">Connect Google Drive</button>
+<button type="button" onclick="driveBackup()">Backup Now</button>
+<button type="button" onclick="driveRestore()">Restore From Drive</button>
+<button type="button" class="alt" onclick="driveDisconnect()">Disconnect</button>
+</div>
+<label><input type="checkbox" id="includePins" checked style="width:auto"> Include offline PIN directory (larger backup)</label>
+<p class="note" id="driveStatus" aria-live="polite">Not connected. First connect and authorize Google Drive app-data access.</p>
+</div><div class="section"><b>Saved Bills</b><select id="saved" onchange="loadBill(this.value)"><option value="">Select saved bill</option></select></div><p class="note">Your records stay in this browser unless you export them. Print at 100% scale. In Chrome print settings choose 4×6 in (101.6 × 152.4 mm) paper, margins None, and background graphics ON. If Save as PDF forces A4, select 4×6 paper in the print dialog or use a browser/printer that supports custom paper.</p></aside><main><div class="tools"><button onclick="printLabel()">Print 4×6 / Save PDF</button><span class="note">Live preview · updates as you type</span></div><div class="sheet-wrap"><div class="sheet"><div class="head"><img id="logo" src="motoseva.jpg"><div class="brand"><b id="brand">MOTOSEVA</b><div class="sub" id="subtitle">Automotive Spares & Express Logistics</div><div class="sub">Contact: 7797477567</div></div><div class="courier"><strong id="pCourier">INDIA POST SPEED POST</strong><div id="pBill"></div><div id="pDate" class="sub"></div></div></div><div class="addresses"><div class="addr"><h3>FROM (SENDER)</h3><div class="details"><strong id="sender">MotoSeva</strong><div>Rampur<br>PO: Rampur Bhatpara<br>PS: Gaighata<br>Dist: North 24 Parganas<br>West Bengal - 743249</div></div><div class="phone">Mobile: 7797477567</div></div><div class="addr"><h3>TO (DELIVER TO) <span style="float:right" id="pPinTop"></span></h3><div class="details"><strong id="pName"></strong><div id="pAddress"></div><div>PO: <span id="pPo"></span></div><div>PS: <span id="pPs"></span></div><div>District: <span id="pDistrict"></span></div><div class="highlight" id="pPin"></div></div><div class="phone" id="pMobile"></div></div></div><div class="item"><div class="itemgrid"><div><span class="small">ITEM DESCRIPTION</span><br><b id="pItem"></b></div><div><span class="small">QTY</span><br><b id="pQty"></b></div><div><span class="small">TOTAL AMOUNT</span><br><b id="pAmount"></b></div></div><div class="status"><b id="pPayment">Prepaid</b><span id="pWeight"></span><span id="pStatus"></span></div></div><div class="tracking"><div class="dash">AWB / COURIER TRACKING: <span id="pAwb"></span><span style="float:right">Affix courier barcode here</span></div></div><div class="foot">NetConnect + MotoSeva Logistics System • Consignee Delivery Copy</div></div></div></main></div><script>
 const ids='shop bill date courier name address po ps district state pin mobile item qty amount payment weight status awb'.split(' ');const $=id=>document.getElementById(id);const key='netmoto_v12_bills',itemkey='netmoto_v12_items';let bills=JSON.parse(localStorage.getItem(key)||'[]');function val(k){return $(k).value}function put(id,v){$(id).textContent=v||''}function render(){let net=val('shop')==='net';$('logo').src=net?'netconnect.jpg':'motoseva.jpg';put('brand',net?'NETCONNECT ONLINE SERVICES':'MOTOSEVA');put('sender',net?'NetConnect Online Services':'MotoSeva');put('subtitle',net?'Online & Studio':'Automotive Spares & Express Logistics');put('pCourier',val('courier'));put('pBill',val('bill'));put('pDate',val('date'));put('pName',val('name'));put('pAddress',val('address'));put('pPo',val('po'));put('pPs',val('ps'));put('pDistrict',val('district'));put('pPinTop','PIN: '+val('pin'));put('pPin',val('state')+' - '+val('pin'));put('pMobile','Contact: '+val('mobile'));put('pItem',val('item'));put('pQty',val('qty'));put('pAmount','Rs. '+val('amount'));put('pPayment',val('payment'));put('pWeight','Weight: '+val('weight')+' g');put('pStatus','Status: '+val('status'));put('pAwb',val('awb'))}function refresh(){let items=JSON.parse(localStorage.getItem(itemkey)||'[]');$('items').innerHTML='';items.forEach(x=>{let o=document.createElement('option');o.value=x;$('items').append(o)});$('saved').innerHTML='<option value="">Select saved bill</option>';bills.forEach((b,i)=>{let o=document.createElement('option');o.value=i;o.textContent=b.bill+' — '+b.name;$('saved').append(o)})}function save(){let b={};ids.forEach(k=>b[k]=val(k));b.weightUnit='g';if(!b.name.trim())return alert('Enter receiver name');let i=bills.findIndex(x=>x.bill===b.bill&&x.shop===b.shop);if(i>=0)bills[i]=b;else bills.push(b);localStorage.setItem(key,JSON.stringify(bills));let items=JSON.parse(localStorage.getItem(itemkey)||'[]');if(b.item.trim()&&!items.some(x=>x.toLowerCase()===b.item.trim().toLowerCase()))items.push(b.item.trim());localStorage.setItem(itemkey,JSON.stringify(items));refresh();newBill();alert('Bill saved! Next invoice number is ready. Use Saved Bills to reprint the previous invoice.')}function loadBill(i){if(i==='')return;let b=bills[Number(i)];ids.forEach(k=>$(k).value=b[k]??'');if(!b.weightUnit && b.weight!==undefined && b.weight!=='')$('weight').value=String(Number(b.weight)*1000);render()}function nextInvoiceNumber(){
   const prefix=val('shop')==='net'?'NET-':'MOTO-';
   const counterKey='netmoto_v16_next_'+val('shop');
@@ -70,4 +84,112 @@ async function importPinCsv(){let file=$('pinCsv').files[0];if(!file)return aler
 async function findPins(){let pin=val('pin').trim(),sel=$('pinMatches'),seq=++pinQuerySequence;sel.innerHTML='';sel._matches=[];let placeholder=document.createElement('option');placeholder.value='';placeholder.textContent=/^\d{6}$/.test(pin)?'Searching...':'Enter a 6-digit PIN';sel.append(placeholder);if(!/^\d{6}$/.test(pin))return;try{let db=await openPinDB();let matches=await new Promise((resolve,reject)=>{let req=db.transaction('offices','readonly').objectStore('offices').index('pin').getAll(pin);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});if(seq!==pinQuerySequence)return;sel.innerHTML='';let empty=document.createElement('option');empty.value='';empty.textContent=matches.length?'Select post office ('+matches.length+' matches)':'No matching office in imported directory';sel.append(empty);matches.forEach((x,i)=>{let o=document.createElement('option');o.value=String(i);o.textContent=x.office+' | '+x.district+' | '+x.state;sel.append(o)});sel._matches=matches;if(matches.length===1){sel.value='0';choosePin()}}catch(e){placeholder.textContent='PIN search failed: '+e.message}}
 function choosePin(){let sel=$('pinMatches'),x=sel._matches&&sel._matches[Number(sel.value)];if(sel.value===''||!x)return;$('po').value=x.office;$('district').value=x.district;$('state').value=x.state;render()}
 $('pin').addEventListener('input',findPins);
-ids.forEach(k=>$(k).addEventListener('input',render));$('shop').addEventListener('change',newBill);$('date').value=new Date().toISOString().slice(0,10);refresh();newBill();loadPins();</script></html>
+ids.forEach(k=>$(k).addEventListener('input',render));$('shop').addEventListener('change',newBill);$('date').value=new Date().toISOString().slice(0,10);refresh();newBill();loadPins();</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+/* V17: user-authorized, least-privilege Google Drive appDataFolder backup.
+   No API keys or client secrets are embedded. OAuth access token lives only in memory. */
+const DRIVE_SCOPE='https://www.googleapis.com/auth/drive.appdata';
+const DRIVE_FILENAME='netconnect_motoseva_v17_backup.json';
+let driveToken='',driveTokenClient=null,driveBusy=false;
+const driveMsg=t=>{document.getElementById('driveStatus').textContent=t};
+function driveClientId(){return document.getElementById('googleClientId').value.trim()}
+function driveConnect(){
+ const id=driveClientId();
+ if(!/^[-\w]+\.apps\.googleusercontent\.com$/.test(id))return driveMsg('Enter a valid Google OAuth Web Client ID first.');
+ if(!window.google?.accounts?.oauth2)return driveMsg('Google sign-in did not load. Check your internet connection.');
+ localStorage.setItem('netmoto_v17_google_client_id',id);
+ driveTokenClient=google.accounts.oauth2.initTokenClient({
+  client_id:id,scope:DRIVE_SCOPE,
+  callback:(r)=>{if(r.error||!r.access_token){driveMsg('Google authorization failed: '+(r.error||'no token'));return}
+    driveToken=r.access_token;driveMsg('Connected. Tap Backup Now to protect your records.');}
+ });
+ driveTokenClient.requestAccessToken({prompt:driveToken?'':'consent'});
+}
+function driveDisconnect(){
+ if(driveToken&&window.google?.accounts?.oauth2)google.accounts.oauth2.revoke(driveToken,()=>{});
+ driveToken='';driveMsg('Disconnected. Existing cloud backup remains in your Google Drive.');
+}
+async function driveRequest(url,opts={}){
+ if(!driveToken)throw Error('Connect Google Drive first.');
+ const h=new Headers(opts.headers||{});h.set('Authorization','Bearer '+driveToken);
+ const r=await fetch(url,{...opts,headers:h});
+ if(!r.ok){let msg=(await r.text()).slice(0,350);if(r.status===401)driveToken='';
+ throw Error('Google Drive '+r.status+': '+msg)}
+ return r;
+}
+async function readAllPins(){
+ const db=await openPinDB();
+ return new Promise((resolve,reject)=>{
+  const rows=[],tx=db.transaction('offices','readonly'),req=tx.objectStore('offices').openCursor();
+  req.onsuccess=()=>{const c=req.result;if(c){rows.push(c.value);c.continue()}else resolve(rows)};
+  req.onerror=()=>reject(req.error);tx.onerror=()=>reject(tx.error);
+ });
+}
+async function replaceAllPins(rows){
+ if(!Array.isArray(rows))return;
+ const db=await openPinDB();
+ await new Promise((resolve,reject)=>{let tx=db.transaction('offices','readwrite');tx.objectStore('offices').clear();tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});
+ for(let i=0;i<rows.length;i+=500)await savePinBatch(db,rows.slice(i,i+500));
+ if(typeof loadPins==='function')await loadPins();
+}
+async function makeFullBackup(){
+ const includePins=document.getElementById('includePins').checked;
+ return {format:'netmoto-v17',createdAt:new Date().toISOString(),
+  bills:JSON.parse(localStorage.getItem(key)||'[]'),
+  items:JSON.parse(localStorage.getItem(itemkey)||'[]'),
+  counters:{moto:localStorage.getItem('netmoto_v16_next_moto'),net:localStorage.getItem('netmoto_v16_next_net')},
+  pins:includePins?await readAllPins():null,
+  pinsIncluded:includePins};
+}
+async function findCloudBackup(){
+ const q=encodeURIComponent("name = '"+DRIVE_FILENAME+"' and trashed = false");
+ const r=await driveRequest('https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name,modifiedTime,size),nextPageToken&page_size=100&q='+q);
+ const d=await r.json();return (d.files||[]).sort((a,b)=>b.modifiedTime.localeCompare(a.modifiedTime))[0];
+}
+async function driveBackup(){
+ if(driveBusy)return;driveBusy=true;
+ try{
+  driveMsg('Preparing backup… Large PIN directories may take a while.');
+  const data=await makeFullBackup();
+  const existing=await findCloudBackup();
+  const boundary='netmoto_v17_boundary';
+  const meta=existing?{name:DRIVE_FILENAME}:{name:DRIVE_FILENAME,parents:['appDataFolder']};
+  const body='--'+boundary+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+JSON.stringify(meta)+
+    '\r\n--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+JSON.stringify(data)+
+    '\r\n--'+boundary+'--';
+  driveMsg('Uploading '+(new Blob([body]).size/1048576).toFixed(1)+' MB to Google Drive…');
+  const url=existing?'https://www.googleapis.com/upload/drive/v3/files/'+encodeURIComponent(existing.id)+'?uploadType=multipart':
+                       'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+  await driveRequest(url,{method:existing?'PATCH':'POST',headers:{'Content-Type':'multipart/related; boundary='+boundary},body});
+  driveMsg('✓ Cloud backup saved '+new Date().toLocaleString()+'. Bills: '+data.bills.length+
+   '; PIN offices: '+(data.pins?.length||0)+(data.pinsIncluded?'':' (PIN directory excluded)'));
+ }catch(e){driveMsg('Backup failed: '+e.message)}finally{driveBusy=false}
+}
+async function driveRestore(){
+ if(driveBusy)return;driveBusy=true;
+ try{
+  driveMsg('Checking Google Drive backup…');
+  const f=await findCloudBackup();if(!f)throw Error('No V17 cloud backup found in this Google account.');
+  const r=await driveRequest('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(f.id)+'?alt=media');
+  const d=await r.json();
+  if(d.format!=='netmoto-v17'||!Array.isArray(d.bills)||!Array.isArray(d.items))throw Error('Invalid backup format.');
+  const info='Cloud backup: '+(d.createdAt||'unknown date')+'\nBills: '+d.bills.length+
+    '\nPIN records: '+(Array.isArray(d.pins)?d.pins.length:'not included')+
+    '\n\nREPLACE your current local bills and item names with this backup?';
+  if(!confirm(info)){driveMsg('Restore cancelled.');return}
+  // Keep a local safety copy of existing bills before overwriting.
+  const old={bills:JSON.parse(localStorage.getItem(key)||'[]'),items:JSON.parse(localStorage.getItem(itemkey)||'[]')};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(old)],{type:'application/json'}));
+  a.download='NetMoto_before_cloud_restore.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+  if(Array.isArray(d.pins)){driveMsg('Restoring PIN directory…');await replaceAllPins(d.pins)}
+  localStorage.setItem(key,JSON.stringify(d.bills));localStorage.setItem(itemkey,JSON.stringify(d.items));
+  if(d.counters?.moto)localStorage.setItem('netmoto_v16_next_moto',d.counters.moto);
+  if(d.counters?.net)localStorage.setItem('netmoto_v16_next_net',d.counters.net);
+  bills=d.bills;refresh();newBill();
+  driveMsg('✓ Restore complete. Bills: '+d.bills.length+'; PIN offices: '+(d.pins?.length||'unchanged')+'.');
+ }catch(e){driveMsg('Restore failed: '+e.message)}finally{driveBusy=false}
+}
+document.getElementById('googleClientId').value=localStorage.getItem('netmoto_v17_google_client_id')||'';
+</script>
+</html>
