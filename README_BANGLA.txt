@@ -1,10 +1,9 @@
-NetConnect + MotoSeva V13 — IndexedDB PIN Import
+NetConnect + MotoSeva V14 — Premium Dark Blue
 
-1. ZIP extract করে index.html, netconnect.jpg, motoseva.jpg GitHub repository root-এ upload/replace করুন।
-2. GitHub Settings > Pages > Deploy from a branch > main > /(root) > Save।
-3. Live website reload করুন। CSV file Choose File > Import / Update PIN CSV।
-4. Import progress দেখাবে। Import শেষ হলে 6-digit PIN দিয়ে Post Office select করুন।
-5. পুরোনো V12 bill এবং item localStorage keys অপরিবর্তিত রাখা হয়েছে। Browser data clear করবেন না। Backup JSON রাখুন।
-6. PIN database browser IndexedDB-তে থাকে, অন্য ফোনে নিজে থেকে sync হয় না।
-7. CSV must contain pincode, officename, district, statename columns।
-8. This release has not been tested on your exact mobile browser.
+1. ZIP extract korun.
+2. index.html, motoseva.jpg, netconnect.jpg GitHub Pages publishing folder e upload/replace korun (ZIP ta noy).
+3. Commit changes korun; website refresh korun.
+4. Browser-er ager domain ebong storage unchanged thakle saved bills ebong IndexedDB PIN data thakbe.
+5. Safety: update-er age Backup JSON download korun. Browser data clear korben na.
+6. 4x6 shipping label markup and its original styling preserved. Print dialog e 4x6 paper, 100% scale, background graphics use korun.
+7. App is static, browser-local; no server-side sync.
